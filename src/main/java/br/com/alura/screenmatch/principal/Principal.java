@@ -7,6 +7,7 @@ import br.com.alura.screenmatch.service.ConsumoApi;
 import br.com.alura.screenmatch.service.ConverteDados;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -39,12 +40,21 @@ public class Principal {
 		}
 
        // temporadas.forEach(System.out::println);
+//
+//        for (int i = 0; i < dados.totalTemporadas(); i++  ){
+//            List<DadosEpsodio> episodiosTemporada = temporadas.get(i).epsodios();
+//            for (int j = 0; j < episodiosTemporada.size(); j++){
+//                System.out.println(episodiosTemporada.get(j).titulo());
+//            }
+//        }
 
-        for (int i = 0; i < dados.totalTemporadas(); i++  ){
-            List<DadosEpsodio> episodiosTemporada = temporadas.get(i).epsodios();
-            for (int j = 0; j < episodiosTemporada.size(); j++){
-                System.out.println(episodiosTemporada.get(j).titulo());
-            }
-        }
+        //expressão lambda
+        temporadas.forEach(t -> t.epsodios().forEach(e -> System.out.println(e.titulo())) );
+        List<String> nomes = Arrays.asList("Jacque", "Iasmin", "Paulo", "Rodrigo", "Nico" );
+        nomes.stream()
+                .sorted()
+                .limit(3)
+                .forEach(System.out::println);
+
     }
 }
