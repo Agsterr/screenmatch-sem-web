@@ -29,7 +29,7 @@ public class Principal {
 
 
         DadosSerie dados = converteDados.obterDados(json, DadosSerie.class);
-        System.out.println(dados);
+        //System.out.println(dados);
 
              List<DadosTemporada> temporadas = new ArrayList<>();
 
@@ -65,16 +65,44 @@ public class Principal {
 
         System.out.println("\n Top 5 episódios");
         dadosEpsodios.stream()
+                //filtrando
                 .filter(e -> !e.avaliacao().equalsIgnoreCase("N/A"))
                 .sorted(Comparator.comparing(DadosEpsodio::avaliacao).reversed())
                 .limit(5)
                 .forEach(System.out::println);
+
+
+//        System.out.println("\nTop 10 episódios");
+//        dadosEpisodios.stream()
+//                .filter(e -> !e.avaliacao().equalsIgnoreCase("N/A"))
+//                .peek(e -> System.out.println("Primeiro filtro(N/A) " + e))
+//                .sorted(Comparator.comparing(DadosEpisodio::avaliacao).reversed())
+//                .peek(e -> System.out.println("Ordenação " + e))
+//                .limit(10)
+//                .peek(e -> System.out.println("Limite " + e))
+//                .map(e -> e.titulo().toUpperCase())
+//                .peek(e -> System.out.println("Mapeamento " + e))
+//                .forEach(System.out::println);
+
+
 
         List<Episodio> episodios = temporadas.stream()
                 .flatMap(t -> t.epsodios().stream()
                 .map(d -> new Episodio(t.numero(), d))
                 )
                 .collect(Collectors.toList());
+
+        System.out.println("Digite o nome do epsódio: ");
+          var trechoTitulo = scanner.nextLine();
+        Optional<Episodio> epsodioBuscado = episodios.stream()
+                .filter(e -> e.getTitulo().toUpperCase().contains(trechoTitulo.toUpperCase()))
+                .findFirst();
+        if (epsodioBuscado.isPresent()){
+            System.out.println("Epsódio encontrado!");
+            System.out.println("Temporada: " + epsodioBuscado.get().getTemporada());
+        }else {
+            System.out.println("Epsódio não encontrado!");
+        }
 
         episodios.forEach(System.out::println);
         System.out.println("Apartir de que ano você deseja ver os epsódios? ");
