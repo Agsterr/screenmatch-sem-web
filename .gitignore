@@ -31,5 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
-###chave api key###
+# Arquivo de variáveis de ambiente
 .env
