@@ -11,7 +11,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ScreenmatchApplication implements CommandLineRunner {
 
 
-	//anotação para o jpa gerenciar a interface por que não tem como instanciar e para a jpa gerenciar tem que ser em uma classe que o spring gerencie
+	//anotação para o jpa gerenciar a interface por que não tem como instanciar e
+	// para a jpa gerenciar tem que ser em uma classe que o spring gerencie
+
+	//injeção de repositorio
 	@Autowired
 	private SerieRepository repositorio;
 

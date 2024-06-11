@@ -27,9 +27,14 @@ public class Serie {
         private String poster;
         private String sinopse;
 
-        @Transient
+        //mapeamento 1 para muitos com a episodio
+        @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL )
         private List<Episodio> episodios = new ArrayList<>();
 
+        //jpa pede construtor padrão
+        public Serie(){
+
+        }
     public Serie(DadosSerie dadosSerie){
         this.titulo = dadosSerie.titulo();
         this.totalTemporadas = dadosSerie.totalTemporadas();
