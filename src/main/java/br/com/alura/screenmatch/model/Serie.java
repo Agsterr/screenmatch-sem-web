@@ -28,7 +28,8 @@ public class Serie {
         private String sinopse;
 
         //mapeamento 1 para muitos com a episodio
-        @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL )
+                                                                  //ansioso
+        @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
         private List<Episodio> episodios = new ArrayList<>();
 
         //jpa pede construtor padrão
@@ -55,10 +56,12 @@ public class Serie {
     }
 
     public List<Episodio> getEpisodios() {
+
         return episodios;
     }
 
     public void setEpisodios(List<Episodio> episodios) {
+        episodios.forEach(e -> e.setSerie(this));
         this.episodios = episodios;
     }
 
@@ -120,14 +123,16 @@ public class Serie {
 
     @Override
     public String toString() {
-        return "Serie{" +
+        return
                 ", genero=" + genero +
                 ", titulo='" + titulo + '\'' +
                 ", totalTemporadas=" + totalTemporadas +
                 ", avaliacao=" + avaliacao +
                 ", atores='" + atores + '\'' +
                 ", poster='" + poster + '\'' +
-                ", sinopse='" + sinopse + '\'' +
-                '}';
+                ", sinopse='" + sinopse + '\''+
+                ", episodios='" + episodios + '\''
+
+                ;
     }
 }
