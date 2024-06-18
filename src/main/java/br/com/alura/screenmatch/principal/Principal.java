@@ -1,9 +1,6 @@
 package br.com.alura.screenmatch.principal;
 
-import br.com.alura.screenmatch.model.DadosSerie;
-import br.com.alura.screenmatch.model.DadosTemporada;
-import br.com.alura.screenmatch.model.Episodio;
-import br.com.alura.screenmatch.model.Serie;
+import br.com.alura.screenmatch.model.*;
 import br.com.alura.screenmatch.repository.SerieRepository;
 import br.com.alura.screenmatch.service.ConsumoApi;
 import br.com.alura.screenmatch.service.ConverteDados;
@@ -38,6 +35,8 @@ public class Principal {
                     4 - Buscar séries por titulo
                     5-  Buscar série por ator
                     6 - Top 5 séries
+                    7 - Buscar séries por categoria
+                    8 - buscar séries por temporadas
                                     
                     0 - Sair                                 
                     """;
@@ -71,6 +70,9 @@ public class Principal {
                 case 7:
                     buscarSeriesPorCategoria();
                     break;
+
+                case 8:
+                    buscarSeriesPorTemporadas();
                 case 0:
                     System.out.println("Saindo...");
                     break;
@@ -179,9 +181,25 @@ public class Principal {
         System.out.println("Deseja buscar séries de que categoria/gênero? ");
         var nomeGenero = leitura.nextLine();
 
+        //chamar o enum
+
+        Categoria categoria = Categoria.fromPortugues(nomeGenero);
 
         List<Serie> seriesPorCategoria = repositorio.findByGenero(categoria);
+        System.out.println("Séries da categoria  " + nomeGenero);
+        seriesPorCategoria.forEach(System.out::println);
     }
+    private void buscarSeriesPorTemporadas() {
+        System.out.println("digite ate quantas temporadas a série deve ter!!!");
+        var quatidadeDeTemporadas = leitura.nextInt();
+
+        System.out.println("Digite a partir de que avalição !!!");
+        var avaliacao = leitura.nextDouble();
+
+        List<Serie> seriesPorTemporada = repositorio.findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(quatidadeDeTemporadas , avaliacao);
+        seriesPorTemporada.forEach(t -> System.out.println(t.getTitulo() + " quantidade de temporadas: " + t.getTotalTemporadas() + " Avaliação: " + t.getAvaliacao()));
+    }
+
 
 
 }
