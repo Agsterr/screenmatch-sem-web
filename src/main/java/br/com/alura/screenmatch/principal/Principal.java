@@ -191,12 +191,12 @@ public class Principal {
     }
     private void buscarSeriesPorTemporadas() {
         System.out.println("digite ate quantas temporadas a série deve ter!!!");
-        var quatidadeDeTemporadas = leitura.nextInt();
+        var totalTemporadas = leitura.nextInt();
 
         System.out.println("Digite a partir de que avalição !!!");
         var avaliacao = leitura.nextDouble();
 
-        List<Serie> seriesPorTemporada = repositorio.findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(quatidadeDeTemporadas , avaliacao);
+        List<Serie> seriesPorTemporada = repositorio.seriesPorTemporadaEAvaliacao(totalTemporadas, avaliacao);
         seriesPorTemporada.forEach(t -> System.out.println(t.getTitulo() + " quantidade de temporadas: " + t.getTotalTemporadas() + " Avaliação: " + t.getAvaliacao()));
     }
 
