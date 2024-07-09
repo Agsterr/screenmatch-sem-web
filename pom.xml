@@ -78,6 +78,13 @@
             <version>5.2.2</version>
         </dependency>
         -->
+         <!--devtools classe para atualizar automatico-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 	<repositories>
 		<repository>
