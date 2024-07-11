@@ -16,7 +16,7 @@ public class Episodio {
     private Long id;
     private Integer temporada;
     private String titulo;
-    private Integer numeroEpsodio;
+    private Integer numeroEpisodio;
     private Double avaliacao;
     private LocalDate dataLancamento;
 
@@ -28,10 +28,10 @@ public class Episodio {
     public Episodio() {
     }
 
-    public Episodio(int numeroTemporada, DadosEpsodio dadosEpisodio) {
+    public Episodio(int numeroTemporada, DadosEpisodio dadosEpisodio) {
         this.temporada = numeroTemporada;
         this.titulo = dadosEpisodio.titulo();
-        this.numeroEpsodio = dadosEpisodio.numero();
+        this.numeroEpisodio = dadosEpisodio.numero();
         try {
             this.avaliacao = Double.valueOf(dadosEpisodio.avaliacao());
         }catch (NumberFormatException ex){
@@ -80,12 +80,12 @@ public class Episodio {
         this.titulo = titulo;
     }
 
-    public Integer getNumeroEpsodio() {
-        return numeroEpsodio;
+    public Integer getNumeroEpisodio() {
+        return numeroEpisodio;
     }
 
-    public void setNumeroEpsodio(Integer numeroEpsodio) {
-        this.numeroEpsodio = numeroEpsodio;
+    public void setNumeroEpisodio(Integer numeroEpisodio) {
+        this.numeroEpisodio = numeroEpisodio;
     }
 
     public Double getAvaliacao() {
@@ -108,7 +108,7 @@ public class Episodio {
     public String toString() {
         return "temporada=" + temporada +
                 ", titulo='" + titulo + '\'' +
-                ", numeroEpsodio=" + numeroEpsodio +
+                ", numeroEpsodio=" + numeroEpisodio +
                 ", avaliacao=" + avaliacao +
                 ", dataLancamento=" + dataLancamento
                 ;
