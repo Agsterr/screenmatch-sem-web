@@ -1,6 +1,7 @@
 package br.com.alura.screenmatch.model;
 
 import jakarta.persistence.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;

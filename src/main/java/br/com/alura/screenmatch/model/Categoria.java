@@ -4,16 +4,15 @@ public enum Categoria {
     ACAO("Action", "Ação"),
     ROMANCE("Romance", "Romance"),
     COMEDIA("Comedy", "Comédia"),
-    DRAMA("Drama", "Drama" ),
+    DRAMA("Drama", "Drama"),
     CRIME("Crime", "Crime");
 
     private String categoriaOmdb;
-
     private String categoriaPortugues;
 
-    Categoria(String categoriaOmdb, String cateriaPortugues){
+    Categoria(String categoriaOmdb, String categoriaPortugues){
         this.categoriaOmdb = categoriaOmdb;
-        this.categoriaPortugues = cateriaPortugues;
+        this.categoriaPortugues = categoriaPortugues;
     }
 
     public static Categoria fromString(String text) {
@@ -33,5 +32,4 @@ public enum Categoria {
         }
         throw new IllegalArgumentException("Nenhuma categoria encontrada para a string fornecida: " + text);
     }
-
 }

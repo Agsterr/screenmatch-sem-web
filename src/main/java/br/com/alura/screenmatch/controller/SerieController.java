@@ -57,4 +57,10 @@ public List<EpisodioDTO> obterTodasTeporadas(@PathVariable Long id){
     public List<EpisodioDTO> obterTemporadasPorNumero(@PathVariable Long id, @PathVariable Long numero){
         return servico.obterTemporadasPorNumero(id, numero);
     }
+
+    @GetMapping("/categoria{nomeGenero}")
+
+    public List<SerieDTO>obterSeriesPorCategoria(@PathVariable String nomeGenero){
+        return servico.obterSeriesPorCategoria(nomeGenero);
+    }
 }

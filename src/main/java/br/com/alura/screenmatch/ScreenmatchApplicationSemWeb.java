@@ -1,5 +1,6 @@
 //package br.com.alura.screenmatch;
 //
+//import br.com.alura.screenmatch.model.Episodio;
 //import br.com.alura.screenmatch.principal.Principal;
 //import br.com.alura.screenmatch.repository.SerieRepository;
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@
 //	public void run(String... args) throws Exception {
 //
 //		Principal principal = new Principal(repositorio);
+//
+//
 //		principal.exibeMenu();
 //
 //
