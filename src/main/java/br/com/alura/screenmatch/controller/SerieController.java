@@ -1,6 +1,5 @@
 package br.com.alura.screenmatch.controller;
 
-
 import br.com.alura.screenmatch.dto.EpisodioDTO;
 import br.com.alura.screenmatch.dto.SerieDTO;
 import br.com.alura.screenmatch.service.SerieService;
@@ -13,54 +12,49 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-
-//para não precisar ficar colocando /series
 @RequestMapping("/series")
 public class SerieController {
 
-
-    //injeção de dependencia
     @Autowired
     private SerieService servico;
 
     @GetMapping
-    public List<SerieDTO> obterSeries(){
-
-        //chamada do metodo da classe serieserviço graças a injeção de dependencia
-     return servico.obterTodasAsSeries();
+    public List<SerieDTO> obterSeries() {
+        return servico.obterTodasAsSeries();
     }
-   @GetMapping("/top5")
-    public List<SerieDTO> obterTop5Series(){
+
+    @GetMapping("/top5")
+    public List<SerieDTO> obterTop5Series() {
         return servico.obterTop5Series();
-   }
+    }
 
-   @GetMapping("/lancamentos")
-    public List<SerieDTO> obterLancamentos(){
+    @GetMapping("/lancamentos")
+    public List<SerieDTO> obterLancamentos() {
         return servico.obterLancamentos();
-   }
+    }
 
-   @GetMapping("/{id}")     //o parametro vem do html
-    public SerieDTO obterPorParametro(@PathVariable Long id){
-
-        // é passado para o metodo da classe service que faz a busca no repositorio
+    @GetMapping("/{id}")
+    public SerieDTO obterPorId(@PathVariable Long id) {
         return servico.obterPorId(id);
-   }
+    }
 
-   @GetMapping("/{id}/temporadas/todas")
-public List<EpisodioDTO> obterTodasTeporadas(@PathVariable Long id){
-
+    @GetMapping("/{id}/temporadas/todas")
+    public List<EpisodioDTO> obterTodasTemporadas(@PathVariable Long id){
         return servico.obterTodasTemporadas(id);
-
-   }
+    }
 
     @GetMapping("/{id}/temporadas/{numero}")
     public List<EpisodioDTO> obterTemporadasPorNumero(@PathVariable Long id, @PathVariable Long numero){
         return servico.obterTemporadasPorNumero(id, numero);
     }
 
-    @GetMapping("/categoria{nomeGenero}")
+    @GetMapping("/{id}/temporadas/top")
+    public List<EpisodioDTO> obterTopEpisodios(@PathVariable Long id){
+        return servico.obterTopEpisodios(id);
+    }
 
-    public List<SerieDTO>obterSeriesPorCategoria(@PathVariable String nomeGenero){
+    @GetMapping("/categoria/{nomeGenero}")
+    public List<SerieDTO> obterSeriesPorCategoria(@PathVariable String nomeGenero){
         return servico.obterSeriesPorCategoria(nomeGenero);
     }
 }
